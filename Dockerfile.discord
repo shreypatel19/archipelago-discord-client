@@ -1,0 +1,16 @@
+# Dockerfile for Archipelago Discord Bot
+
+FROM python:3.13-slim
+
+# Set working directory
+WORKDIR /app
+
+# Copy requirements and install dependencies
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the Archipelago source code
+COPY . .
+
+# Run the Discord bot
+CMD ["python", "DiscordBot.py"]
