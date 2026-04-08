@@ -19,3 +19,7 @@ kivymd>=2.0.1.dev0
 
 # Legacy world dependencies that custom worlds rely on
 Pymem==1.14.0
+
+# discord bot dependencies
+discord.py==2.7.1
+python-dotenv==1.0.1
