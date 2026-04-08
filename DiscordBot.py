@@ -6,6 +6,8 @@ from CommonClient import CommonContext, server_loop
 import asyncio
 import copy
 from NetUtils import JSONtoTextParser, color_codes
+import ModuleUpdate
+ModuleUpdate.update(yes=True)  # Automatically update dependencies without user interaction
 
 from dotenv import load_dotenv
 load_dotenv()
