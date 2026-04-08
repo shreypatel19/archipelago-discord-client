@@ -1,3 +1,6 @@
+import ModuleUpdate
+ModuleUpdate.update(yes=True)  # "errm, please install pkg_resources" that shit been deprecated bruh
+
 import os
 from typing import Optional
 import discord
@@ -6,8 +9,6 @@ from CommonClient import CommonContext, server_loop
 import asyncio
 import copy
 from NetUtils import JSONtoTextParser, color_codes
-import ModuleUpdate
-ModuleUpdate.update(yes=True)  # Automatically update dependencies without user interaction
 
 from dotenv import load_dotenv
 load_dotenv()
