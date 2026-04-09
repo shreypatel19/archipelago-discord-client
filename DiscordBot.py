@@ -2,6 +2,7 @@ import ModuleUpdate
 ModuleUpdate.update(yes=True)  # "errm, please install pkg_resources" that shit been deprecated bruh
 
 import os
+import re
 from typing import Optional
 import discord
 from discord.ext import commands
@@ -57,12 +58,14 @@ class DiscordContext(CommonContext):
   def on_print_json(self, args):
     channel = self.discord_client.get_channel(self.channel_id)
     data = copy.deepcopy(args["data"])
-    output = f'```ansi\n{self.json_parser(data)}\n```'
-    if channel:
-      asyncio.run_coroutine_threadsafe(channel.send(output), self.discord_client.loop)
-      print(f"Sent message to Discord channel {self.channel_id}: {output}")
-    else:
-      print(f"Failed to send message to Discord channel {self.channel_id}: Channel not found")
+    # Server restarts every two hours, meaning we reconnect and the join messages will be printed every two hours.
+    if not re.match(rf"{re.escape(self.username)}.*viewing.*", data[0]["text"]) and not "Now that you are connected," in data[0]["text"]:
+      output = f'```ansi\n{self.json_parser(data)}\n```'
+      if channel:
+        asyncio.run_coroutine_threadsafe(channel.send(output), self.discord_client.loop)
+        print(f"Sent message to Discord channel {self.channel_id}: {output}")
+      else:
+        print(f"Failed to send message to Discord channel {self.channel_id}: Channel not found")
   
 intents = discord.Intents.default()
 intents.message_content = True
