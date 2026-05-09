@@ -112,7 +112,7 @@ async def handle(request):
   html = '<div class="tenor-gif-embed" data-postid="20072034" data-share-method="host" data-aspect-ratio="0.915625" data-width="100%"><a href="https://tenor.com/view/epic-win-fuuka-persona-persona3-fuuka-persona-gif-20072034">Epic Win Fuuka GIF</a>from <a href="https://tenor.com/search/epic+win-gifs">Epic Win GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>'
   if hasattr(bot, "ap_client") and bot.ap_client.game:
     html = f"<p>Connected to {bot.ap_client.game}</p>" + html
-  return web.Response(text=html)
+  return web.Response(text=html, content_type='text/html')
 
 async def start_web_server():
   app = web.Application()
