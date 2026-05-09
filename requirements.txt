@@ -24,4 +24,4 @@ Pymem==1.14.0
 # discord bot dependencies
 discord.py==2.7.1
 python-dotenv==1.0.1
-flask==2.3.3
+aiohttp==3.8.4
