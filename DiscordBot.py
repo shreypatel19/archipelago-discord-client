@@ -119,7 +119,7 @@ async def start_web_server():
   app.add_routes([web.get('/', handle)])
   runner = web.AppRunner(app)
   await runner.setup()
-  site = web.TCPSite(runner, 'localhost', 8080)
+  site = web.TCPSite(runner, '0.0.0.0', os.getenv("PORT", 10000))
   await site.start()
 
 bot.run(os.getenv("DISCORD_TOKEN"))
