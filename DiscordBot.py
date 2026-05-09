@@ -111,7 +111,7 @@ async def on_ready():
 bot.run(os.getenv("DISCORD_TOKEN"))
 
 flask_app = flask.Flask(__name__)
-flask_app.run(port=5000)
+flask_app.run(port=os.getenv("PORT", 10000))
 
 @flask_app.route("/status")
 def status():
